@@ -1,4 +1,5 @@
 name: USDA official data refresh
+run-name: USDA ${{ github.event_name }} — official data refresh
 on:
   workflow_dispatch:
   push:
@@ -6,7 +7,7 @@ on:
       - automation/usda_snapshot.py
       - .github/workflows/usda-refresh.yml
   schedule:
-    - cron: '17 * * * *'
+    - cron: '*/5 * * * *'
 permissions:
   contents: write
 concurrency:
@@ -18,6 +19,8 @@ jobs:
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
+      - name: Record the actual execution trigger
+        run: python3 -c 'import json,os; print(json.dumps({k:os.environ.get(k) for k in ("GITHUB_EVENT_NAME","GITHUB_RUN_ID","GITHUB_SHA")}))'
       - name: Fetch and validate the official USDA API
         run: python3 automation/usda_snapshot.py --output snapshot
       - name: Publish validated public data
@@ -26,7 +29,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add snapshot/usda.json.gz snapshot/manifest.json
           if ! git diff --cached --quiet; then
-            git commit -m 'Refresh official USDA data [skip ci]'
+            git commit -m 'Refresh official USDA data'
             git push origin HEAD:main
           fi
       - uses: actions/upload-artifact@v4
