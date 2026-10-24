@@ -1,0 +1,28 @@
+name: USDA official data refresh
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - automation/usda_snapshot.py
+      - .github/workflows/usda-refresh.yml
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: usda-official-data
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch and validate the official USDA API
+        run: python3 automation/usda_snapshot.py --output snapshot
+      - uses: actions/upload-artifact@v4
+        with:
+          name: usda-official-snapshot
+          path: snapshot/
+          retention-days: 7
+          if-no-files-found: error
