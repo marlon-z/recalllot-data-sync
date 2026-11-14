@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "source_url": "https://www.fsis.usda.gov/fsis/api/recall/v/1",
-  "fetched_at": "2026-11-14T18:04:09+00:00",
-  "record_count": 1244,
-  "sha256": "03601ee7300cc1d0e127c6978c7d575ca707a816d54be31aeb355081d7d8e7d4",
-  "compressed_sha256": "21c5360be17220ea5db12e93924666cd4aa5059d0e13a1305097fb985b8f79d9",
-  "upstream_date": "2026-11-06",
+  "fetched_at": "2026-11-14T22:26:14+00:00",
+  "record_count": 1245,
+  "sha256": "83a7d714556b6008bc38fd49d793397b12afd6104856a6992ecf9c4630e61326",
+  "compressed_sha256": "5c0a559689c22970073addb342a248e653860eac29702fa67271ea640686b6b8",
+  "upstream_date": "2026-11-14",
   "file": "usda.json.gz"
 }
