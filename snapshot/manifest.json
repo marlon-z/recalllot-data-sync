@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_url": "https://www.fsis.usda.gov/fsis/api/recall/v/1",
-  "fetched_at": "2026-11-20T03:17:55+00:00",
+  "fetched_at": "2026-11-20T12:55:04+00:00",
   "record_count": 1245,
   "sha256": "767c59b8ede054defe9c6c964514d9b5ec129afd0ebfce1ac46c88adf7bac09f",
   "compressed_sha256": "49fd84525ec0009c8b70613c1c8bcab69b790c70f1e848d4fe881b8d5c4fa2af",
